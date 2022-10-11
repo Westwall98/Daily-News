@@ -15,11 +15,11 @@ if not os.path.exists('./picsave'):
 
 path = './picsave/'+filename
 
-with open(path,'w') as fp:
+with open(path,'wb') as fp:
 	for i in range(15):
 		fp.write(str(i+1)+'、'+jsstr["data"][i]+'\n\n')
 
-files=[('file',(filename,open(path,'r'),'text/plain'))]
+files=[('file',(filename,open(path,'rb'),'text/plain'))]
 
 response = requests.post(url,files=files)
 
