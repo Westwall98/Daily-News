@@ -7,7 +7,7 @@ apiurl = os.getenv('URL')
 
 url = os.getenv('POSTURL')
 
-jsstr = json.loads(requests.get(apiurl).text)
+js = json.loads(requests.get(apiurl).text)
 
 filename = str(datetime.date.today()) +'.txt'
 
@@ -18,7 +18,7 @@ path = './picsave/'+filename
 
 with open(path,'w') as fp:
 	for i in range(15):
-		fp.write(str(i+1)+'、'+jsstr["data"][i]+'\n\n')
+		fp.write(str(i+1)+'、'+js["data"][i]+'\n\n')
 
 files=[('file',(filename,open(path,'r'),'text/plain'))]
 
