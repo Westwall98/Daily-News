@@ -6,21 +6,21 @@ apiurl = os.getenv('URL')
 
 url = os.getenv('POSTURL')
 
-pic = (json.loads(requests.get(apiurl).text))['imageUrl']
+js = json.loads(requests.get(apiurl).text)
+
+filename = js["time"][0]+'.txt'
 
 if not os.path.exists('./picsave'):
     os.mkdir('./picsave')
 
-img = requests.get(pic).content
+path = './picsave/'+filename
 
-imgname = '1.png'
+with open(path,'w') as fp:
+	for i in range(15):
+		fp.write(str(i+1)+'、'+js["data"][i]+'\n\n')
 
-path = './picsave/'+imgname
-
-with open(path,'wb') as fp:
-    fp.write(img)
-
-files=[('image',('1.png',open('./picsave/1.png','rb'),'image/png'))]
+files=[('file',(filename,open(path,'r'),'text/plain'))]
 
 response = requests.post(url,files=files)
+
 print(response.text)
