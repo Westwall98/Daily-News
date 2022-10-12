@@ -25,6 +25,10 @@ jobs:
            python-version: 3.8
       - name: 'Install requirements'
         run: pip install requests
+      - name: 'Set timezone'
+        run: timedatectl set-timezone Asia/Shanghai
+      - name: 'Try time'
+        run: date
       - name: 'Working'
         env: 
           URL: ${{ secrets.URL }}
