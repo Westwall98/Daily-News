@@ -27,8 +27,6 @@ jobs:
         run: pip install requests
       - name: 'Set timezone'
         run: sudo timedatectl set-timezone Asia/Shanghai
-      - name: 'Try time'
-        run: date
       - name: 'Working'
         env: 
           URL: ${{ secrets.URL }}
