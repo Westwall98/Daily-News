@@ -25,3 +25,4 @@ files=[('file',(filename,open(path,'r'),'text/plain'))]
 response = requests.post(url,files=files)
 
 print(response.text)
+print(url)
