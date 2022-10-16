@@ -35,10 +35,9 @@ jobs:
 #           python ./news.py
       - name: Commit
         run: |
+          git config user.name we1.hu@qq.com
           git config user.email Westwall98
-          #git config user.name we1.hu@qq.com
-          touch log
-          echo `date '+%b %d %H:%M'` >> log
+          echo `date '+%b %d %H:%M'` >> ./log
           git add log
           git commit -m "modified:`date '+%b %d %H:%M'`"
       - name: Push changes
