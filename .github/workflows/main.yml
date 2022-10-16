@@ -33,14 +33,5 @@ jobs:
 #           POSTURL: ${{ secrets.POSTURL }}
 #         run: |
 #           python ./news.py
-      - name: Commit
-        run: |
-          git config user.name Westwall98
-          git config user.email we1.hu@qq.com
-          echo Token `date '+%b %d %H:%M'` >> ./log
-          git add log
-          git commit -m "modified: `date '+%b %d %H:%M'`"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
+      - name: Check Version
+#         run: python --version
