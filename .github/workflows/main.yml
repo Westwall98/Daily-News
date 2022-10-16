@@ -36,11 +36,11 @@ jobs:
       - name: Commit
         run: |
           git config user.email Westwall98
-          git config user.name we1.hu@qq.com
+          #git config user.name we1.hu@qq.com
           touch log
-          echo `date` >> log
+          echo `date '+%b %d %H:%M'` >> log
           git add log
-          git commit -m "action:`date`"
+          git commit -m "modified:`date '+%b %d %H:%M'`"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
