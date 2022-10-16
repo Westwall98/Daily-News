@@ -19,17 +19,29 @@ jobs:
       - uses: actions/checkout@v3
 
       # Runs a single command using the runners shell
-      - name: 'Set up Python'
-        uses: actions/setup-python@v4
-        with:
-           python-version: '3.10'
-      - name: 'Install requirements'
-        run: pip install requests
-      - name: 'Set timezone'
-        run: sudo timedatectl set-timezone Asia/Shanghai
-      - name: 'Working'
-        env: 
-          URL: ${{ secrets.URL }}
-          POSTURL: ${{ secrets.POSTURL }}
+#       - name: 'Set up Python'
+#         uses: actions/setup-python@v4
+#         with:
+#            python-version: '3.10'
+#       - name: 'Install requirements'
+#         run: pip install requests
+#       - name: 'Set timezone'
+#         run: sudo timedatectl set-timezone Asia/Shanghai
+#       - name: 'Working'
+#         env: 
+#           URL: ${{ secrets.URL }}
+#           POSTURL: ${{ secrets.POSTURL }}
+#         run: |
+#           python ./news.py
+      - name: Commit
         run: |
-          python ./news.py
+          git config user.email Westwall98
+          git config user.name we1.hu@qq.com
+          touch log
+          echo `date` >> log
+          git add log
+          git commit -m "action:`date`"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
